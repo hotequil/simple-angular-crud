@@ -1,0 +1,42 @@
+<div class="list">
+    <a routerLink="nova" class="list__button" mat-raised-button color="primary">Nova postagem</a>
+
+    <table mat-table [dataSource]="posts" class="mat-elevation-z2">
+        <ng-container matColumnDef="title">
+            <th mat-header-cell *matHeaderCellDef>Título</th>
+            <td mat-cell *matCellDef="let element">{{ element.title }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="body">
+            <th mat-header-cell *matHeaderCellDef>Descrição</th>
+            <td mat-cell *matCellDef="let element">{{ element.body }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let element">
+                <div class="list__actions">
+                    <a mat-icon-button
+                       [routerLink]="element.id"
+                       color="primary"
+                       matTooltip="Editar postagem"
+                       aria-label="Editar postagem">
+                        <mat-icon>edit</mat-icon>
+                    </a>
+                    <button mat-icon-button
+                            (click)="delete(element)"
+                            color="warn"
+                            matTooltip="Deletar postagem"
+                            aria-label="Deletar postagem">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </div>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="postsColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: postsColumns;"></tr>
+    </table>
+</div>
+
+

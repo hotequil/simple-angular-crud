@@ -1,0 +1,15 @@
+.list{
+    display: flex;
+    flex-direction: column;
+    row-gap: var(--space);
+
+    &__button{
+        align-self: flex-end;
+    }
+
+    &__actions{
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+}

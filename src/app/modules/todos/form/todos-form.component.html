@@ -1,0 +1,33 @@
+<form class="form" #form="ngForm" (ngSubmit)="onSubmit()">
+    <fieldset class="form__fieldset">
+        <legend class="form__legend">{{ todo.id ? 'Editar' : 'Novo' }} TODO</legend>
+        <div class="form__content">
+            <mat-form-field>
+                <input matInput
+                       placeholder="Título"
+                       autofocus
+                       [disabled]="loadingInfo"
+                       type="text"
+                       name="title"
+                       [maxlength]="formService.DEFAULT_MAX_LENGTH"
+                       [(ngModel)]="todo.title"
+                       [required]="true">
+                <mat-hint align="end">{{ todo.title.length }} / {{ formService.DEFAULT_MAX_LENGTH }}</mat-hint>
+            </mat-form-field>
+            <mat-checkbox name="completed"
+                          [disabled]="loadingInfo"
+                          [(ngModel)]="todo.completed">
+                Finalizada
+            </mat-checkbox>
+        </div>
+        <div class="form__actions">
+            <a routerLink="/todos" mat-button color="primary">Voltar</a>
+            <button [disabled]="form.invalid || form.pristine"
+                    type="submit"
+                    mat-raised-button
+                    color="primary">
+                {{ todo.id ? 'Salvar' : 'Criar' }}
+            </button>
+        </div>
+    </fieldset>
+</form>

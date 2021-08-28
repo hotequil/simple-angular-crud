@@ -1,0 +1,14 @@
+<header class="header">
+    <mat-toolbar color="primary">
+        <mat-toolbar-row>
+            <button mat-icon-button
+                    class="header__menu-button"
+                    (click)="drawer.toggle()"
+                    [matTooltip]="drawer.opened ? 'Fechar menu lateral' : 'Abrir menu lateral'"
+                    [attr.aria-label]="drawer.opened ? 'Fechar menu lateral' : 'Abrir menu lateral'">
+                <mat-icon>menu</mat-icon>
+            </button>
+            <span>{{ toolbarTitle }}</span>
+        </mat-toolbar-row>
+    </mat-toolbar>
+</header>

@@ -1,0 +1,42 @@
+<div class="list">
+    <a routerLink="novo" class="list__button" mat-raised-button color="primary">Novo TODO</a>
+
+    <table mat-table [dataSource]="todos" class="mat-elevation-z2">
+        <ng-container matColumnDef="title">
+            <th mat-header-cell *matHeaderCellDef>Título</th>
+            <td mat-cell *matCellDef="let element">{{ element.title }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="completed">
+            <th mat-header-cell *matHeaderCellDef>Finalizado</th>
+            <td mat-cell *matCellDef="let element">{{ element.completed ? 'Sim' : 'Não' }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let element">
+                <div class="list__actions">
+                    <a mat-icon-button
+                       [routerLink]="element.id"
+                       color="primary"
+                       matTooltip="Editar TODO"
+                       aria-label="Editar TODO">
+                        <mat-icon>edit</mat-icon>
+                    </a>
+                    <button mat-icon-button
+                            (click)="delete(element)"
+                            color="warn"
+                            matTooltip="Deletar TODO"
+                            aria-label="Deletar TODO">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </div>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="todosColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: todosColumns;"></tr>
+    </table>
+</div>
+
+

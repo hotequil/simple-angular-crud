@@ -1,0 +1,39 @@
+<form class="form" #form="ngForm" (ngSubmit)="onSubmit()">
+    <fieldset class="form__fieldset">
+        <legend class="form__legend">{{ post.id ? 'Editar' : 'Nova' }} postagem</legend>
+        <div class="form__content">
+            <mat-form-field>
+                <input matInput
+                       placeholder="Título"
+                       autofocus
+                       [disabled]="loadingInfo"
+                       type="text"
+                       name="title"
+                       [maxlength]="formService.DEFAULT_MAX_LENGTH"
+                       [(ngModel)]="post.title"
+                       [required]="true">
+                <mat-hint align="end">{{ post.title.length }} / {{ formService.DEFAULT_MAX_LENGTH }}</mat-hint>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput
+                       placeholder="Descrição"
+                       [disabled]="loadingInfo"
+                       type="text"
+                       name="body"
+                       [maxlength]="formService.DEFAULT_MAX_LENGTH"
+                       [(ngModel)]="post.body"
+                       [required]="true">
+                <mat-hint align="end">{{ post.body.length }} / {{ formService.DEFAULT_MAX_LENGTH }}</mat-hint>
+            </mat-form-field>
+        </div>
+        <div class="form__actions">
+            <a routerLink="/postagens" mat-button color="primary">Voltar</a>
+            <button [disabled]="form.invalid || form.pristine"
+                    type="submit"
+                    mat-raised-button
+                    color="primary">
+                {{ post.id ? 'Salvar' : 'Criar' }}
+            </button>
+        </div>
+    </fieldset>
+</form>

@@ -1,0 +1,29 @@
+.form{
+    &__fieldset{
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__legend{
+        font-size: 1.5rem;
+        font-weight: 500;
+        margin-bottom: var(--space);
+    }
+
+    &__content{
+        display: flex;
+        column-gap: var(--space);
+        margin-bottom: var(--space);
+
+        > *{
+            flex-basis: 25%;
+        }
+    }
+
+    &__actions{
+        display: flex;
+        align-items: center;
+        column-gap: var(--space);
+        align-self: flex-end;
+    }
+}
